@@ -29,6 +29,7 @@ end
 
 Then /I should (not )?see movies with the following ratings: (.*)/ do |show, rating_list|
 	Movie.find_all_by_rating(rating_list.split(' ')).each do |movie|
+	print "#{movie[:title]}\n"
 		if show == 'not '	
 			step %{I should not see "#{movie[:title]}"}
 		else
